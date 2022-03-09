@@ -1,0 +1,8 @@
+import csv
+
+with open('hej.csv', 'r') as csvred:
+
+    csvreader = csv.reader(csvred,delimiter=';')
+    
+for row in csvreader:
+    print(row[0])
