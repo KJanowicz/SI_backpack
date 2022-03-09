@@ -1,0 +1,114 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+struct Rzecz {
+    string nazwa;
+    int waga, cena;
+    double cg;
+};
+
+int main()
+{
+    Rzecz r;
+    vector <Rzecz> R(1);
+     ifstream we("wybor1.txt");
+    //ifstream we("gadzety.txt");
+    cout<<"\nGadzety: \n";
+    cout.width(30);
+    cout<<"nazwa\twaga\tcena"<<endl;
+    int suma=0;
+    while (we>>r.nazwa) {
+      we>>r.waga>>r.cena;
+      r.cg = (double)r.cena/r.waga;
+      R.push_back(r);
+      suma += r.waga;
+    }
+    we.close();
+    for (int i=1; i<R.size(); i++) { cout.width(20); cout<<R[i].nazwa<<"\t"<<R[i].waga<<"\t"<<R[i].cena<<endl; }
+  //  cout<<"suma wag = "<<suma<<endl<<endl;
+    int n = R.size()-1; // liczba przedmiotow
+    int maxwaga;
+    cout<<"\nPodaj max wage plecaka "; cin>>maxwaga;
+
+   // int P[31][501];   // do 30 towarow, do 500 jm
+
+    vector <vector <int> > P(R.size()+1);
+    for (int i=0; i<=R.size(); i++) {
+        for (int j=0; j<=maxwaga; j++) P[i].push_back(0);
+    }
+
+
+  //  for (int j=0; j<=maxwaga; j++) P[0][j]=0;
+  //  for (int i=0; i<=n; i++) P[i][0]=0;
+
+    for (int i=1; i<=n; i++) {
+       int w = R[i].waga;
+       int c = R[i].cena;
+       for (int j=1; j<=maxwaga; j++) {
+           int stara = P[i-1][j];
+           if (w>j) P[i][j] = stara;
+           else {
+                int nowa  = P[i-1][j-w]+ c;
+                if (nowa>stara) P[i][j] = nowa; else P[i][j] = stara;
+                }
+       }
+    }
+    cout<<"\nmax wartosc plecaka = "<<P[n][maxwaga]<<endl;
+/*
+    cout<<"\ntablica W\n";
+    for (int i=0; i<=n; i++) {
+        for (int j=1; j<=maxwaga; j++) cout<<P[i][j]<<"\t";
+        cout<<endl;
+    }
+*/
+    cout<<"\npakujemy:\n";
+    int waga=0;
+    int wartosc=0;
+    int i=n; // ostatni towar
+    int j = maxwaga; // najwieksza waga
+    while (i>0 && j>0) {
+       while (i>0 && P[i][j]==P[i-1][j]) i--;
+       cout.width(20);
+       cout<<R[i].nazwa<<"\t"<<R[i].waga<<"\t"<<R[i].cena<<endl;
+       waga += R[i].waga;
+       wartosc += R[i].cena;
+       j -= R[i].waga;
+       i--;
+    }
+    cout<<"\nPlecak ma wage "<<waga<<" i wartosc "<<wartosc<<endl;
+
+    cout<<"\na co zwrocilby algorytm zachlanny ?\n";
+    cout<<"sortujemy gadzety malejaco wedlug ceny za gram towaru\n";
+
+    for (int i=2; i<=n; i++){
+       int j=i;
+       while (j>1 && R[j].cg>R[j-1].cg) {
+           swap(R[j],R[j-1]);
+           j--;
+       }
+    }
+    for (int i=1; i<R.size(); i++) {
+        cout.width(20);
+        cout<<R[i].nazwa<<"\t"<<R[i].cg<<endl;
+    }
+    int luz = maxwaga;
+    i=1;
+    waga=0;
+    wartosc=0;
+    cout<<"i pakujemy:\n";
+    while(i<=n && luz>0) {
+        if (R[i].waga<=luz) {
+            cout.width(20);
+            cout<<R[i].nazwa<<endl;
+            waga += R[i].waga;
+            wartosc += R[i].cena;
+            luz -= R[i].waga;
+        }
+        i++;
+    }
+    cout<<"Plecak ma wage "<<waga<<" i wartosc "<<wartosc<<endl;
+
+    return 0;
+}
