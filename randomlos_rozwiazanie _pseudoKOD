@@ -1,0 +1,26 @@
+def losowa_wartosc()
+waga = 0
+i=0
+j=0
+tab=[]
+  do
+  losid = [rand(1,1001)]
+  if(losid==tab[k])
+  i++
+  if(i==100) exit
+  else 
+  ^
+  else
+  if(waga=waga+waga[losid]>50)
+  ^
+  else
+  waga=waga+waga[losid]
+  tab[j]=losid
+  i=0
+  j++
+  while(waga<50);
+  
+  for i in plecak:
+    print 
+  
+ losowa_wartosc()
