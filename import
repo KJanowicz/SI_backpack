@@ -1,8 +1,9 @@
 import csv
 
-with open('hej.csv', 'r') as csvred:
+with open('hej.csv', newline='') as csvfile:
 
-    csvreader = csv.reader(csvred,delimiter=';')
+    csvreader = csv.reader(csvfile, delimiter=';', quotechar='|')
     
-for row in csvreader:
-    print(row[0])
+    for row in csvreader:
+        print(';'.join(row))
+ #TERAZ DZIAŁA
