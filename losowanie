@@ -1,0 +1,10 @@
+int* losujLiczby(int k, int n) {
+  int* lista_w = new int[k];
+  int i = 0;
+  while (i < k) {
+    int t = rand() % n + 1;
+    if (szukajLiczby(lista_w, i, t) == -1) {
+      lista_w[i++] = t;
+    }
+  }
+  return lista_w;
