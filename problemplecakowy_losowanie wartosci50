@@ -1,0 +1,37 @@
+import random
+import csv
+waga=0
+wartosc=0
+tab=[]
+i=0
+dice = 0 
+kilo=0
+with open('hej.csv', newline='') as csvfile:
+
+    csvreader = csv.reader(csvfile, delimiter=';', quotechar='|')
+    
+    for row in csvreader:
+        tab.append(row)
+        #print(row)
+print("Problem plecakowy - Janowicz, Łatacz, Pieczarka")
+print("")
+while(waga<=50):
+    dice = random.randint(1,1001)
+    kilo=tab[dice]
+    
+    test=waga+int(kilo[1])
+    if (test==50):
+        waga=waga+int(kilo[1])
+        wartosc=wartosc+int(kilo[2])
+        print("Ukradziony id: ",dice," waga: ",kilo[1]," wartosc: ",kilo[2])
+        break
+    elif(test>50):
+        i=i
+    else:
+        waga=waga+int(kilo[1])
+        wartosc=wartosc+int(kilo[2])
+        print("Ukradziony id: ",dice," waga: ",kilo[1]," wartosc: ",kilo[2])
+    
+    
+print("Waga:" ,waga)
+print("Wartosc:" ,wartosc)
