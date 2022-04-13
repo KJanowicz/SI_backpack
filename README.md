@@ -13,3 +13,9 @@ Postęp prac :
 23.03.2022r. Funkcja RAND --implementacja do pseudokodu
 
 https://sites.google.com/site/topinfo12/home/programowanie-dynamiczne/problem-plecakowy-dyskretny
+
+13.04.2022r. Implementacja pseudokodu w funkcjonalnośc napisanego programu.
+-Baza hej.csv
+-skorzystanie z funkcji rand oraz tablicowania [][]x2 wymiary
+-drukowanie wagi, id, wartosci plecaka<=50 oraz na samym koncu łaczne id towaru
+------------------------------I etap : oceniony - zalicozny---------------------------------------
