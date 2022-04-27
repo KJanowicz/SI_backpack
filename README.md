@@ -19,3 +19,5 @@ https://sites.google.com/site/topinfo12/home/programowanie-dynamiczne/problem-pl
 -skorzystanie z funkcji rand oraz tablicowania [][]x2 wymiary
 -drukowanie wagi, id, wartosci plecaka<=50 oraz na samym koncu łaczne id towaru
 ------------------------------I etap : oceniony - zalicozny---------------------------------------
+
+27.04.2022r. Implementacja pamięci HM + HMS tab[id, waga, wartosc_rozwiazenie]
