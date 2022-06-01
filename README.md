@@ -21,3 +21,6 @@ https://sites.google.com/site/topinfo12/home/programowanie-dynamiczne/problem-pl
 ------------------------------I etap : oceniony - zalicozny---------------------------------------
 
 27.04.2022r. Implementacja pamięci HM + HMS tab[id, waga, wartosc_rozwiazenie]
+
+01.06.2022r. Zdanie projektu - rozwiązany problem z pamięcią HM HMS oraz dodane wartosci porównania i wyrzucenia z najmniejszego do największego
+w instrukcji warunkowej HMCR z podaną wartością oraz apendem i pop, czyli dopisanie i usuniecie nieprawidłowego rozwiązania i przyjęcia tego, który jest w warunku.
