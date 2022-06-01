@@ -1,0 +1,134 @@
+import random
+import csv
+waga=0
+wartosc=0
+tab=[]
+hm=[]
+hms=10
+fitness=[]
+ile=[]
+i=0
+o=1
+dice = 0 
+kilo=0
+hmcr=0.7
+
+with open('hej.csv', newline='') as csvfile:
+
+    csvreader = csv.reader(csvfile, delimiter=';', quotechar='|')
+    
+    for row in csvreader:
+        tab.append(row)
+        #print(row)
+print("Problem plecakowy - Janowicz, Łatacz, Pieczarka")
+print("")
+for y in range(hms):
+    ile=[]
+    fitness=[]
+    waga=0
+    wartosc=0
+    print("Rozwiazanie: ",y+1)
+    while(waga<=50):
+        dice = random.randint(1,1000)
+        kilo=tab[dice]
+        test=waga+int(kilo[1])
+        if (test==50):
+            waga=waga+int(kilo[1])
+            wartosc=wartosc+int(kilo[2])
+            print("Ukradziony id: ",dice," waga: ",kilo[1]," wartosc: ",kilo[2])
+            ile.append(dice)
+            break
+        elif(test>50):
+            i=i
+        else:
+            waga=waga+int(kilo[1])
+            wartosc=wartosc+int(kilo[2])
+            print("Ukradziony id: ",dice," waga: ",kilo[1]," wartosc: ",kilo[2])  
+            ile.append(dice)
+    ile.insert(0,wartosc)
+    ile.insert(0,waga)
+    ile.insert(0,y+1)
+    
+    hm.append(ile)
+    print("Waga:" ,waga)
+    print("Wartosc:" ,wartosc)
+    print("")
+print(hm)
+print("")
+waga2=0
+wartosc2=0
+tab2=[]
+hm2=[]
+hms2=10
+fitness2=[]
+ile2=[]
+i2=0
+dice2= 0 
+kilo2=0
+ile2=[]
+fitness2=[]
+waga2=0
+wartosc2=0
+y2=10
+print("Rozwiazanie: ",y2+1)
+while(waga2<=50):
+    dice2 = random.randint(1,1000)
+    kilo2=tab[dice2]
+    test2=waga2+int(kilo2[1])
+    if (test2==50):
+        waga2=waga2+int(kilo2[1])
+        wartosc2=wartosc2+int(kilo2[2])
+        print("Ukradziony id: ",dice2," waga: ",kilo2[1]," wartosc: ",kilo2[2])
+        ile.append(dice2)
+        break
+    elif(test2>50):
+        i2=i2
+    else:
+        waga2=waga2+int(kilo2[1])
+        wartosc2=wartosc2+int(kilo2[2])
+        print("Ukradziony id: ",dice2," waga: ",kilo2[1]," wartosc: ",kilo2[2])  
+        ile2.append(dice2)
+ile2.insert(0,wartosc2)
+ile2.insert(0,waga2)
+ile2.insert(0,y2+1)
+    
+hm2.append(ile2)
+print("Waga:" ,waga2)
+print("Wartosc:" ,wartosc2)
+print("")
+print(hm2)
+
+idd=0
+
+posr1=hm[0]
+posr2=posr1[2]
+temp=posr2
+
+for o in range(hms):
+    temp1=hm[o]
+    temp2=temp1[2]
+    if (temp>temp2):
+        temp=temp2
+        idd=o
+print("")
+print("Wartosc najmniejsza w plecaku: ")
+print(temp)
+print("W rozwiazaniu: ")
+print(idd+1)
+
+print("")
+
+if (wartosc2>temp):
+    hm.pop(idd)
+    hm.insert(idd,ile2)
+
+print(hm)
+print("")
+
+f=0
+for f in range(hms):
+    storage=hm[f]
+    plecak=storage[0]
+    wag=storage[1]
+    money=storage[2]
+    print("Plecak nr",plecak, " Waga:",wag," Wartość:",money)
